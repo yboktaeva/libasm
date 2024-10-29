@@ -1,9 +1,9 @@
-; test
+; custom strlen function in assembly
 
-global _start
+global _ft_strlen
 section .text
 ft_strlen:
-    mov rax, 0              ; rax - return register
+    xor rax, rax             ; rax - return register
 
 .loop:
     cmp BYTE [rdi+rax], 0   ; compare current byte with 0
@@ -14,18 +14,6 @@ ft_strlen:
 .end:
     ret                     ; return length in rax
 
-
-_start:
-    ; test the function with echo $?
-    mov rdi, string
-    call ft_strlen
-
-    mov rdi, rax
-    mov rax, 60
-    syscall
-
-section .data
-    string db "hello", 0
 
 
 ;     mov rdi, 1          ; rdi - 1er argument
