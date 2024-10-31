@@ -1,9 +1,11 @@
-; custom strlen function in assembly
-
-global _ft_strlen
 section .text
+    ; size_t strlen(const char *s);
+    ; The  strlen() function calculates the length of the string pointed to by s,
+    ; excluding the terminating null byte ('\0').
+    ; custom ft_strlen function in assembly
+    global ft_strlen
 ft_strlen:
-    xor rax, rax             ; rax - return register
+    xor rax, rax            ; rax - return register
 
 .loop:
     cmp BYTE [rdi+rax], 0   ; compare current byte with 0
@@ -13,20 +15,3 @@ ft_strlen:
 
 .end:
     ret                     ; return length in rax
-
-
-
-;     mov rdi, 1          ; rdi - 1er argument
-;     mov rsi, msg        ; rsi - 2er argument
-;     mov rdx, msglen     ; rdx 3er argument
-;     syscall
-
-; ; now exit
-
-;     mov rax, 60
-;     xor rdi, 0
-;     syscall
-; section .rodata:
-;     msg: db "Hello, world!", 10
-;     msglen: equ $ - msg
-
